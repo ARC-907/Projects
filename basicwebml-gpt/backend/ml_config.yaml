@@ -1,0 +1,5 @@
+enabled_plugins:
+- basic_gpt
+- reverse_gpt
+- openai_gpt
+- tmp_plugin
