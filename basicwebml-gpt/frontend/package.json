@@ -2,18 +2,39 @@
   "name": "basicwebml-gpt",
   "version": "0.1.0",
   "private": true,
+  "main": "../electron.js",
   "dependencies": {
-    "jest-environment-jsdom": "^30.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "jest": "^29.0.0",
-    "jest-fetch-mock": "^3.0.3"
+    "jest-fetch-mock": "^3.0.3",
+    "jest-environment-jsdom": "^30.0.0",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.3.0",
+    "esbuild": "^0.19.0"
   },
   "scripts": {
-    "start": "echo 'Frontend dev server placeholder'",
+    "build:react": "node build.js",
+    "start": "electron ..",
+    "package": "npm run build:react && electron-builder --win --x64",
     "test": "jest"
+  },
+  "build": {
+    "appId": "com.example.basicwebmlgpt",
+    "asar": true,
+    "files": [
+      "build/**/*",
+      "../electron.js",
+      "../backend.exe"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend.exe",
+        "to": "backend.exe"
+      }
+    ]
   },
   "type": "module"
 }

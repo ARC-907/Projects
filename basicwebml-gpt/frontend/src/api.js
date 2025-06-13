@@ -1,5 +1,7 @@
+const BASE = 'http://localhost:8000';
+
 export async function generate(prompt, model) {
-  const res = await fetch('/api/v1/generate', {
+  const res = await fetch(`${BASE}/api/v1/generate`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ model, prompt })
@@ -9,25 +11,25 @@ export async function generate(prompt, model) {
 }
 
 export async function listPlugins() {
-  const res = await fetch('/api/v1/plugins');
+  const res = await fetch(`${BASE}/api/v1/plugins`);
   if (!res.ok) throw new Error('Request failed');
   return res.json();
 }
 
 export async function refreshPlugins() {
-  const res = await fetch('/api/v1/plugins/refresh', { method: 'POST' });
+  const res = await fetch(`${BASE}/api/v1/plugins/refresh`, { method: 'POST' });
   if (!res.ok) throw new Error('Request failed');
   return res.json();
 }
 
 export async function listThreads() {
-  const res = await fetch('/api/v1/threads');
+  const res = await fetch(`${BASE}/api/v1/threads`);
   if (!res.ok) throw new Error('Request failed');
   return res.json();
 }
 
 export async function createThread(name) {
-  const res = await fetch('/api/v1/threads', {
+  const res = await fetch(`${BASE}/api/v1/threads`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name })
@@ -37,7 +39,7 @@ export async function createThread(name) {
 }
 
 export async function sendMessage(threadId, prompt, model) {
-  const res = await fetch(`/api/v1/threads/${threadId}/messages`, {
+  const res = await fetch(`${BASE}/api/v1/threads/${threadId}/messages`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ model, prompt })
@@ -47,13 +49,13 @@ export async function sendMessage(threadId, prompt, model) {
 }
 
 export async function getSharedCache(threadId) {
-  const res = await fetch(`/api/v1/shared_cache?thread_id=${threadId}`);
+  const res = await fetch(`${BASE}/api/v1/shared_cache?thread_id=${threadId}`);
   if (!res.ok) throw new Error('Request failed');
   return res.json();
 }
 
 export async function importCache(key, threadId) {
-  const res = await fetch('/api/v1/shared_cache/import', {
+  const res = await fetch(`${BASE}/api/v1/shared_cache/import`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ key, thread_id: threadId })
@@ -63,7 +65,7 @@ export async function importCache(key, threadId) {
 }
 
 export async function getThread(threadId) {
-  const res = await fetch(`/api/v1/threads/${threadId}`);
+  const res = await fetch(`${BASE}/api/v1/threads/${threadId}`);
   if (!res.ok) throw new Error('Request failed');
   return res.json();
 }

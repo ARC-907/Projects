@@ -24,3 +24,7 @@ Reload plugins by calling `POST /api/v1/plugins/refresh`.
 ### Threads
 
 Run multiple conversations simultaneously. Use `POST /api/v1/threads` to create a thread and `POST /api/v1/threads/<id>/messages` to send prompts. Archives can be downloaded via `/api/v1/threads/<id>/archive`.
+
+## Packaging as Desktop App
+
+See `README.txt` for instructions on building a Windows executable that bundles the backend and frontend using Electron and PyInstaller.

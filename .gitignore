@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .env
 node_modules/
+basicwebml-gpt/frontend/build/
+basicwebml-gpt/backend/dist/
+*.spec

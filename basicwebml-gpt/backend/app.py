@@ -4,6 +4,11 @@ from .gpt_engine import MLMatrix
 
 app = FastAPI(title="BasicWebML-GPT", version="0.2.0")
 
+
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
 ml_matrix = MLMatrix()
 
 
